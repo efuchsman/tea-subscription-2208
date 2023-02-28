@@ -13,7 +13,7 @@ class Customer < ApplicationRecord
     .where('customer_tea_subscriptions.status = 0')
   end
 
-  def cancelled_subscriptions
+  def canceled_subscriptions
     self.customer_tea_subscriptions
     .where('customer_tea_subscriptions.status = 1')
   end
