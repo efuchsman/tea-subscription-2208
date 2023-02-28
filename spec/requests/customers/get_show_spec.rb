@@ -17,8 +17,6 @@ RSpec.describe "/customer" do
         expect(response).to be_successful
         expect(response).to have_http_status(200)
 
-
-
         expect(@json).to be_a Hash
         expect(@json).to have_key :data
 
