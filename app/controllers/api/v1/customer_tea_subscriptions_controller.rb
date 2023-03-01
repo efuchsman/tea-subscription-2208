@@ -9,7 +9,7 @@ class Api::V1::CustomerTeaSubscriptionsController < ApplicationController
       tea = Tea.find_by(id: tea_id)
       subscription = Subscription.find_by(id: subscription_id)
       if customer.nil? || tea.nil? || subscription.nil?
-        render json: { error: "One or more of the IDs provided do not exist"}
+        render json: { error: "One or more of the IDs provided does not exist"}, status: 404
       else
         customer_tea_subscription = CustomerTeaSubscription.new(new_customer_tea_sub_params)
         if customer_tea_subscription.save
@@ -17,7 +17,7 @@ class Api::V1::CustomerTeaSubscriptionsController < ApplicationController
         end
       end
     else
-      render json: { error: "Missing Required Parameters" }, status: 404
+      render json: { error: "Missing one or more required parameters" }, status: 400
     end
   end
 
