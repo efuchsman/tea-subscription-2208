@@ -4,6 +4,7 @@ RSpec.describe Customer, type: :model do
   describe "Relationship" do
     it { should have_many :customer_tea_subscriptions}
     it { should have_many(:teas).through(:customer_tea_subscriptions) }
+    it { should have_many(:subscriptions).through(:customer_tea_subscriptions) }
   end
 
   describe "Validations" do
@@ -23,28 +24,34 @@ RSpec.describe Customer, type: :model do
 
     let!(:tea_1) { Tea.create!(title: "title", description: "desc", temperature: "temp", brew_time: "temp")
     }
-    let!(:sub_1) { CustomerTeaSubscription.create!(title: "title1", price: "$1", frequency: "freq1", customer_id: customer_1.id, tea_id: tea_1.id)
+
+    let!(:sub_1) { Subscription.create!(title: "title1", price: "$1", frequency: "freq1")
+    }
+    let!(:sub_2) { Subscription.create!(title: "title2", price: "$2", frequency: "freq2")
+    }
+    let!(:c_sub_1) { CustomerTeaSubscription.create!(customer_id: customer_1.id, tea_id: tea_1.id, subscription_id: sub_1.id)
     }
 
-    let!(:sub_2) { CustomerTeaSubscription.create!(title: "title2", price: "$2", status: 1, frequency: "freq2", customer_id: customer_1.id, tea_id: tea_1.id)
+    let!(:c_sub_2) { CustomerTeaSubscription.create!(status: 1, customer_id: customer_1.id, tea_id: tea_1.id, subscription_id: sub_2.id)
     }
 
-    let!(:sub_3) { CustomerTeaSubscription.create!(title: "title3", price: "$3", frequency: "freq3", customer_id: customer_1.id, tea_id: tea_1.id)
+    let!(:c_sub_3) { CustomerTeaSubscription.create!(customer_id: customer_2.id, tea_id: tea_1.id, subscription_id: sub_2.id)
     }
 
     describe "#active_subscriptions" do
       it "is an array of that customers active subs" do
 
-        expect(customer_1.active_subscriptions.count).to eq(2)
-        expect(customer_1.active_subscriptions).to eq([sub_1, sub_3])
-        expect(customer_2.active_subscriptions.count).to eq(0)
+        expect(customer_1.active_subscriptions.count).to eq(1)
+        expect(customer_1.active_subscriptions).to eq([c_sub_1])
+        expect(customer_2.active_subscriptions.count).to eq(1)
+        expect(customer_2.active_subscriptions).to eq([c_sub_3])
       end
     end
 
     describe "#canceled_subscriptions" do
       it "is an array of that customers canceled subs" do
         expect(customer_1.canceled_subscriptions.count).to eq(1)
-        expect(customer_1.canceled_subscriptions).to eq([sub_2])
+        expect(customer_1.canceled_subscriptions).to eq([c_sub_2])
       end
     end
   end

@@ -7,4 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-  customer1= Customer.create!(first_name: "Eli", last_name: "Fuchsman", email: "eli@mail.com", address: "Eli's address")
+  customer1 = Customer.create!(first_name: "Eli", last_name: "Fuchsman", email: "eli@mail.com", address: "Eli's address")
+
+  tea_1 = Tea.create!(title: "title", description: "desc", temperature: "temp", brew_time: "temp")
+
+  tea_2 = Tea.create!(title: "title", description: "desc", temperature: "temp", brew_time: "temp")
+
+  sub_1 = Subscription.create!(title: "title1", price: "$1", frequency: "freq1")
+
+  sub_2 = Subscription.create!(title: "title2", price: "$2", frequency: "freq2")
+
