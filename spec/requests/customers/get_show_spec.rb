@@ -62,7 +62,7 @@ RSpec.describe "/customer" do
         get "/api/v1/customer"
 
         expect(response).to_not be_successful
-        expect(response).to have_http_status(404)
+        expect(response).to have_http_status(400)
 
         json = JSON.parse(response.body, symbolize_names: true)
 

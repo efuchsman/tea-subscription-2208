@@ -11,7 +11,7 @@ class Api::V1::CustomersController < ApplicationController
         render json: CustomerSerializer.new(customer)
       end
     else
-     render json: { error: "Please provide an id parameter in the URL path" }, status: 404
+     render json: { error: "Please provide an id parameter in the URL path" }, status: 400
     end
   end
 end

@@ -3,5 +3,5 @@ class CustomerTeaSubscription < ApplicationRecord
   belongs_to :tea
   belongs_to :subscription
   validates_presence_of :status
-  enum status: { active: 0, cancelled: 1 }
+  enum status: { active: 0, canceled: 1 }
 end
