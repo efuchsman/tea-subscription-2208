@@ -24,7 +24,7 @@ class Api::V1::CustomerSubscriptionsController < ApplicationController
     if c_sub_id.present?
       customer_subscription = CustomerSubscription.find_by(id: c_sub_id)
       if !customer_subscription.nil? && customer_subscription.status == "active"
-          customer_tea_subscription.update(status: "canceled")
+          customer_subscription.update(status: "canceled")
           render json: { success: "Customer subscription has been successfully canceled" }
       elsif !customer_subscription.nil? && customer_subscription.status != "active"
         render json: { error: "Customer subscription has already been canceled" }, status: 409

@@ -12,9 +12,20 @@ RSpec.describe "/cancel-subscription" do
     }
     let!(:sub_2) { Subscription.create!(title: "title2", price: "$2", frequency: "freq2")
     }
-    let!(:c_sub_1) { CustomerTeaSubscription.create!(customer_id: customer_1.id, tea_id: tea_1.id, subscription_id: sub_1.id)
+    let!(:sub_t_1) { SubscriptionTea.create!(tea_id: tea_1.id, subscription_id: sub_1.id)
     }
-    let!(:c_sub_2) { CustomerTeaSubscription.create!(status: 1, customer_id: customer_2.id, tea_id: tea_1.id, subscription_id: sub_1.id)
+    let!(:sub_t_2) { SubscriptionTea.create!(tea_id: tea_1.id, subscription_id: sub_2.id)
+    }
+    let!(:sub_t_2) { SubscriptionTea.create!(tea_id: tea_1.id, subscription_id: sub_2.id)
+    }
+
+    let!(:c_sub_1) { CustomerSubscription.create!(customer_id: customer_1.id, subscription_id: sub_1.id)
+    }
+
+    let!(:c_sub_2) { CustomerSubscription.create!(status: 1, customer_id: customer_2.id, subscription_id: sub_2.id)
+    }
+
+    let!(:c_sub_3) { CustomerSubscription.create!(customer_id: customer_2.id, subscription_id: sub_2.id)
     }
 
     describe "When the customer has an active subscription" do
