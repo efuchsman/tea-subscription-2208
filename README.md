@@ -25,6 +25,21 @@ Tea-Subscription-2208 is an early-stage tea subscription API-service where a use
 * If the user does not wish to download Ruby/Rails, they can simply download <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a> to launch a development container of the app on their local device.
 
 
+<h3>Setup</h3>
+
+<h4>Setup for Ruby on Rails</h4>
+
+1. Fork and Clone the repository
+2. Install gem packages: `bundle install`
+4. Setup the database: `rails db:{drop,create,migrate,seed}`
+
+<h4>Setup for Docker</h4>
+
+
+
+<h3>Repository</h3>
+https://github.com/efuchsman/tea-subscription-2208
+
 
 <h3 align="center">Database Schema</h3>
 <div align="center">
