@@ -16,7 +16,7 @@
 <h3 align="center">Database Schema</h3>
 <div align="center">
   <a href="https://github.com/efuchsman/tea-subscription-2208">
-    <img src="" alt="Database Schema" width="800" height="250">
+    <img src="lib/images/tea_sub_db.png" alt="Database Schema" width="650" height="350">
   </a>
 </div>
 
