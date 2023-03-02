@@ -16,7 +16,7 @@
 
 <h3>App Description</h3>
 
-Tea-Subscription-2208 is an early-stage tea subscription API-service where a user can GET a customer's active and canceled subscriptions, add subscriptions to a customer and cancel a customer's subscription. 
+Tea-Subscription-2208 is an early-stage tea subscription API-service where a user can get a customer's active and canceled subscriptions, add subscriptions to a customer and cancel a customer's subscription. 
 
 <h3>System Requirements</h3>
 
