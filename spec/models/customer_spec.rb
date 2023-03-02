@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Customer, type: :model do
   describe "Relationship" do
-    it { should have_many :customer_tea_subscriptions}
-    it { should have_many(:teas).through(:customer_tea_subscriptions) }
-    it { should have_many(:subscriptions).through(:customer_tea_subscriptions) }
+    it { should have_many :customer_subscriptions}
+    it { should have_many(:subscriptions).through(:customer_subscriptions) }
+    it { should have_many(:subscription_teas).through(:subscriptions) }
+    it { should have_many(:teas).through(:subscription_teas) }
   end
 
   describe "Validations" do
@@ -18,24 +19,28 @@ RSpec.describe Customer, type: :model do
   describe "Instance Methods" do
     let!(:customer_1) { Customer.create!(first_name: "Eli", last_name: "Fuchsman", email: "el@mail.com", address: "Eli's address")
     }
-
     let!(:customer_2) { Customer.create!(first_name: "Eli2", last_name: "Fuchsman2", email: "el2@mail.com", address: "Eli2's address")
     }
-
     let!(:tea_1) { Tea.create!(title: "title", description: "desc", temperature: "temp", brew_time: "temp")
     }
-
     let!(:sub_1) { Subscription.create!(title: "title1", price: "$1", frequency: "freq1")
     }
     let!(:sub_2) { Subscription.create!(title: "title2", price: "$2", frequency: "freq2")
     }
-    let!(:c_sub_1) { CustomerTeaSubscription.create!(customer_id: customer_1.id, tea_id: tea_1.id, subscription_id: sub_1.id)
+    let!(:sub_t_1) { SubscriptionTea.create!(tea_id: tea_1.id, subscription_id: sub_1.id)
+    }
+    let!(:sub_t_2) { SubscriptionTea.create!(tea_id: tea_1.id, subscription_id: sub_2.id)
+    }
+    let!(:sub_t_2) { SubscriptionTea.create!(tea_id: tea_1.id, subscription_id: sub_2.id)
     }
 
-    let!(:c_sub_2) { CustomerTeaSubscription.create!(status: 1, customer_id: customer_1.id, tea_id: tea_1.id, subscription_id: sub_2.id)
+    let!(:c_sub_1) { CustomerSubscription.create!(customer_id: customer_1.id, subscription_id: sub_1.id)
     }
 
-    let!(:c_sub_3) { CustomerTeaSubscription.create!(customer_id: customer_2.id, tea_id: tea_1.id, subscription_id: sub_2.id)
+    let!(:c_sub_2) { CustomerSubscription.create!(status: 1, customer_id: customer_1.id, subscription_id: sub_2.id)
+    }
+
+    let!(:c_sub_3) { CustomerSubscription.create!(customer_id: customer_2.id, subscription_id: sub_2.id)
     }
 
     describe "#active_subscriptions" do
