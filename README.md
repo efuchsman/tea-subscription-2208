@@ -1,8 +1,22 @@
 <h1 align="center">Tea Subscription 2208</h1>
-<br />
 <div align="center">
-  <a href="https://github.com/efuchsman/lunch-and-learn">
+  <a href="https://github.com/efuchsman/tea-subscription-2208">
     <img src="https://imageio.forbes.com/specials-images/imageserve/5f6c061ca71799093f55fd02/Aromatic-herbal-tea-/0x0.jpg" width="850" height="450">
+  </a>
+</div>
+
+# Table of Contents
+* [App Description](#app-description)
+* [Database Schema](#database-schema)
+* [System Requirements](#system-requirements)
+* [Setup](#setup)
+* [Respository](#repository)
+* [Endpoints](#endpoints)
+
+<h3 align="center">Database Schema</h3>
+<div align="center">
+  <a href="https://github.com/efuchsman/tea-subscription-2208">
+    <img src="lib/images/Tea Subscription 2208.png" alt="Database Schema" width="800" height="250">
   </a>
 </div>
 
