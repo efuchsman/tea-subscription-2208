@@ -32,9 +32,15 @@ Tea-Subscription-2208 is an early-stage tea subscription API-service where a use
 1. Fork and Clone the repository
 2. Install gem packages: `bundle install`
 4. Setup the database: `rails db:{drop,create,migrate,seed}`
+5. Run the server: `rails s`
 
 <h4>Setup for Docker</h4>
 
+1. Fork and Clone the repository
+2. Open Docker Desktop and sign in
+3. Builder docker image and launch server container: `docker-compose up --build` (You will only have to run `docker-compose up` after this unless you pull a newly updated version of the repository from GitHub)
+4. Migrate the database: `docker-compose exec web bundle exec rake db:migrate`
+5. Seed data: `docker-compose exec web bundle exec rake db:seed`
 
 
 <h3>Repository</h3>
