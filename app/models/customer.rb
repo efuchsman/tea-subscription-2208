@@ -1,7 +1,8 @@
 class Customer < ApplicationRecord
-  has_many :customer_tea_subscriptions
-  has_many :teas, through: :customer_tea_subscriptions
-  has_many :subscriptions, through: :customer_tea_subscriptions
+  has_many :customer_subscriptions
+  has_many :subscriptions, through: :customer_subscriptions
+  has_many :subscription_teas, through: :subscriptions
+  has_many :teas, through: :subscription_teas
 
   validates_presence_of :first_name
   validates_presence_of :last_name
@@ -10,12 +11,12 @@ class Customer < ApplicationRecord
   validates_uniqueness_of :email
 
   def active_subscriptions
-    self.customer_tea_subscriptions
-    .where('customer_tea_subscriptions.status = 0')
+    self.customer_subscriptions
+    .where('customer_subscriptions.status = 0')
   end
 
   def canceled_subscriptions
-    self.customer_tea_subscriptions
-    .where('customer_tea_subscriptions.status = 1')
+    self.customer_subscriptions
+    .where('customer_subscriptions.status = 1')
   end
 end

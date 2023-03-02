@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "/add-tea-subscription" do
+RSpec.describe "/add-subscription" do
   describe "POST new subscription endpoint" do
     let!(:customer_1) { Customer.create!(first_name: "Eli", last_name: "Fuchsman", email: "el@mail.com", address: "Eli's address")
     }
@@ -12,6 +12,12 @@ RSpec.describe "/add-tea-subscription" do
     }
     let!(:sub_2) { Subscription.create!(title: "title2", price: "$2", frequency: "freq2")
     }
+    let!(:sub_t_1) { SubscriptionTea.create!(tea_id: tea_1.id, subscription_id: sub_1.id)
+    }
+    let!(:sub_t_2) { SubscriptionTea.create!(tea_id: tea_1.id, subscription_id: sub_2.id)
+    }
+    let!(:sub_t_2) { SubscriptionTea.create!(tea_id: tea_1.id, subscription_id: sub_2.id)
+    }
 
     describe "When all parameters exist in the database" do
       it 'returns a success response and message' do
@@ -19,13 +25,12 @@ RSpec.describe "/add-tea-subscription" do
 
         body = ({
             "customer_id": customer_1.id,
-            "tea_id": tea_1.id,
             "subscription_id": sub_2.id
           })
 
         expect(customer_1.active_subscriptions.count).to eq(0)
 
-        post '/api/v1/add-tea-subscription', headers: headers, params: JSON.generate(body)
+        post '/api/v1/add-subscription', headers: headers, params: JSON.generate(body)
 
         expect(response).to be_successful
         expect(response).to have_http_status(200)
@@ -35,7 +40,7 @@ RSpec.describe "/add-tea-subscription" do
 
         expect(json).to be_a Hash
         expect(json).to have_key :success
-        expect(json[:success]).to eq("Customer tea subscription has been successfully activated")
+        expect(json[:success]).to eq("Customer subscription has been successfully activated")
       end
     end
 
@@ -45,10 +50,9 @@ RSpec.describe "/add-tea-subscription" do
 
         body = ({
             "customer_id": customer_1.id,
-            "tea_id": tea_1.id
           })
 
-        post '/api/v1/add-tea-subscription', headers: headers, params: JSON.generate(body)
+        post '/api/v1/add-subscription', headers: headers, params: JSON.generate(body)
         json = JSON.parse(response.body, symbolize_names: true)
 
         expect(response).to_not be_successful
@@ -65,11 +69,10 @@ RSpec.describe "/add-tea-subscription" do
 
         body = ({
             "customer_id": customer_1.id,
-            "tea_id": tea_1.id,
             "subscription_id": 35
           })
 
-        post '/api/v1/add-tea-subscription', headers: headers, params: JSON.generate(body)
+        post '/api/v1/add-subscription', headers: headers, params: JSON.generate(body)
         json = JSON.parse(response.body, symbolize_names: true)
 
         expect(response).to_not be_successful
