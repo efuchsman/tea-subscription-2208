@@ -19,9 +19,10 @@
 Tea-Subscription-2208 is an early-stage tea subscription API-service where a user can GET a customer's active and canceled subscriptions, add subscriptions to a customer and cancel a customer's subscription. 
 
 <h3>System Requirements</h3>
+
 * Ruby 2.7.4 
 * Rails 5.2.8.1
-* If the user does not wish to download Ruby/Rails, they can simply download <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a><br> to launch a development container of the app on their local device.
+* If the user does not wish to download Ruby/Rails, they can simply download <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a> to launch a development container of the app on their local device.
 
 
 
