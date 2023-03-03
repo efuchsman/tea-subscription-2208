@@ -18,6 +18,15 @@
 
 Tea-Subscription-2208 is an early-stage tea subscription API-service where a user can get a customer's active and canceled subscriptions, add subscriptions to a customer and cancel a customer's subscription. 
 
+
+<h3 align="center">Database Schema</h3>
+<div align="center">
+  <a href="https://github.com/efuchsman/tea-subscription-2208">
+    <img src="lib/images/tea_sub_db.png" alt="Database Schema" width="650" height="350">
+  </a>
+</div>
+
+
 <h3>System Requirements</h3>
 
 * Ruby 2.7.4 
@@ -45,15 +54,6 @@ Tea-Subscription-2208 is an early-stage tea subscription API-service where a use
 
 <h3>Repository</h3>
 https://github.com/efuchsman/tea-subscription-2208
-
-
-<h3 align="center">Database Schema</h3>
-<div align="center">
-  <a href="https://github.com/efuchsman/tea-subscription-2208">
-    <img src="lib/images/tea_sub_db.png" alt="Database Schema" width="650" height="350">
-  </a>
-</div>
-
 
 ## Contact 
 
