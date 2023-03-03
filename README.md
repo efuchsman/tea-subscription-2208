@@ -53,7 +53,12 @@ Tea-Subscription-2208 is an early-stage tea subscription API-service where a use
 
 
 <h3>Repository</h3>
+
 https://github.com/efuchsman/tea-subscription-2208
+
+<h3>Endpoints</h3>
+
+
 
 ## Contact 
 
