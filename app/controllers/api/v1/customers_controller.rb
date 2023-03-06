@@ -39,7 +39,7 @@ class Api::V1::CustomersController < ApplicationController
       end
     elsif !id.present? && api_key == ENV['DELETE_API_KEY']
       render json: { error: "Please provide a Customer ID" }, status: 400
-    elsif api_key != ENV['DELETE_API_KEY'] || !api_key.present?
+    elsif (id.present? || !id.present?) && (api_key != ENV['DELETE_API_KEY'] || !api_key.present?)
       render json: { error: "API credential error" }, status: 400
     end
   end
