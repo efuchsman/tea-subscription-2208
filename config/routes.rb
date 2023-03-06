@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       post "/add-subscription", to: "customer_subscriptions#create"
       patch "/cancel-subscription", to: "customer_subscriptions#cancel_subscription"
       post "/new-customer", to: "customers#create"
+      delete "/delete-customer", to: "customers#delete"
     end
   end
 end

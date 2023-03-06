@@ -24,6 +24,26 @@ class Api::V1::CustomersController < ApplicationController
     end
   end
 
+  def delete
+    id = params[:id]
+    api_key = params[:api_key]
+
+    if id.present? && api_key == ENV['DELETE_API_KEY']
+      customer = Customer.find_by(id: id)
+      if customer.nil?
+        render json: { error: "No customer found with that ID" }, status: 404
+      else
+        customer.customer_subscriptions.delete_all
+        customer.delete
+        render json: { success: "Customer successfully deleted"}
+      end
+    elsif !id.present? && api_key == ENV['DELETE_API_KEY']
+      render json: { error: "Please provide a Customer ID" }, status: 400
+    elsif api_key != ENV['DELETE_API_KEY'] || !api_key.present?
+      render json: { error: "API credential error" }, status: 400
+    end
+  end
+
   private
 
   def customer_params
