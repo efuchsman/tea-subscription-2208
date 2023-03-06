@@ -21,3 +21,4 @@
 
   sub_t_2 = SubscriptionTea.create!(tea_id: tea_1.id, subscription_id: sub_2.id)
 
+
