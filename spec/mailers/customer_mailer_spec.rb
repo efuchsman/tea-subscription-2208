@@ -15,7 +15,7 @@ RSpec.describe CustomerMailer, type: :mailer do
     end
 
     it "renders the body" do
-      expect(mail.body.encoded).to match("Hello, We are so happy to have you!")
+      expect(mail.body.encoded).to match("Hello #{customer_1.first_name}, we are so delighted that you created an account with us!")
     end
   end
 
