@@ -40,8 +40,10 @@ Tea-Subscription-2208 is an early-stage tea subscription API-service where a use
 
 1. Fork and Clone the repository
 2. Install gem packages: `bundle install`
-4. Setup the database: `rails db:{drop,create,migrate,seed}`
-5. Run the server: `rails s`
+3. Setup application.yml through figaro: `bundle exec figaro install`
+4. Create ENV variables in the application.yml: `DELETE_API_KEY`, `GMAIL_USERNAME` and `GMAIL_PASSWORD`
+5. Setup the database: `rails db:{drop,create,migrate,seed}`
+6. Run the server: `rails s`
 
 <h3>Setup for Docker</h3>
 
@@ -84,6 +86,7 @@ https://github.com/efuchsman/tea-subscription-2208
 
 <h4>Check your email for a welcome message:</h4>
 
+![image](https://user-images.githubusercontent.com/104859844/223539388-a8d28dfd-5fd8-4120-80d8-3d1346488bec.png)
 
 
 <h3>GET a customer</h3>
@@ -202,7 +205,15 @@ https://github.com/efuchsman/tea-subscription-2208
 }
 ```
 
+<h3>Delete a Customer</h3>
 
+`DELETE /api/v1/delete-customer?id=#{id}&api_key=#{ENV['DELETE_API_KEY']}`
+
+<h4>Output:</h4>
+
+```
+{"success":"Customer successfully deleted"}
+```
 
 ## Contact 
 
