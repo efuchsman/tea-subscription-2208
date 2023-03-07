@@ -60,6 +60,32 @@ https://github.com/efuchsman/tea-subscription-2208
 
 <h2>Endpoints</h2>
 
+<h3>Create a new customer</h3>
+
+`POST '/api/v1/new-customer'`
+
+```
+{
+    "first_name": "Eli",
+    "last_name": "Fuchsman",
+    "email": "eli@mail.com",
+    "address": "Eli's address" 
+}
+```
+
+
+<h4>Output:</h4>
+
+```
+{
+    "success": "New customer successfully created"
+}
+```
+
+<h4>Check your email for a welcome message:</h4>
+
+
+
 <h3>GET a customer</h3>
 
 `GET /api/v1/customer?id=1`
