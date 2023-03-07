@@ -16,11 +16,12 @@ class Api::V1::CustomersController < ApplicationController
   end
 
   def create
-    customer = Customer.new(customer_params)
-    if customer.save
+    @customer = Customer.new(customer_params)
+    if @customer.save
       render json: { success: "New customer successfully created"}
+      CustomerMailer.with(customer: @customer).welcome_customer.deliver_now
     else
-      render json: customer.errors.messages, status: 400
+      render json: @customer.errors.messages, status: 400
     end
   end
 
